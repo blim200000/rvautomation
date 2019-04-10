@@ -74,7 +74,7 @@ void loop() {
   prevHeatStatus = heatStatus;
   prevTemp = temp;
   prevHumidity = humidity;
-  delay(5000);
+  delay(2000);
 }
 
 void setup_WiFi() {
