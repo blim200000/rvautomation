@@ -8,7 +8,6 @@
   char* heatStatus = "Off";
   float humidity;
   float temp;
-  long lastMsg = 0;
 
   DHTesp dht;
 
