@@ -18,7 +18,6 @@
   const int mqttPort = 1883; // edit this
   const char* mqttUser = "userName"; // edit this
   const char* mqttPassword = "password"; // edit this
-  const char* topicOne = "rv/cargo/heater/temperature";
   
   WiFiClient espClient;
   PubSubClient client(espClient);
@@ -87,7 +86,6 @@ void reconnect() {
       client.publish("rv/cargo/heater/temperature", String(temp).c_str(), true);
       client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
       client.subscribe("rv/outside/weather/temperature");
-      client.subscribe("rv/bedRoom/heater/setTempTo");
     } else {
         Serial.print("failed, rc=");
         Serial.print(client.state());
