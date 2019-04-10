@@ -20,13 +20,13 @@
   
   DHTesp dht;
 
-  const char* ssid = "WigWagDevAP";
-  const char* password = "blimpass";
+  const char* ssid = "***********"; // edit this
+  const char* password = "***********"; // edit this
 
-  const char* mqttServer = "192.168.1.110";
-  const int mqttPort = 1883;
-  const char* mqttUser = "blim";
-  const char* mqttPassword = "blimpass";
+  const char* mqttServer = "192.168.1.110"; // edit this
+  const int mqttPort = 1883; // edit this
+  const char* mqttUser = "userName"; // edit this
+  const char* mqttPassword = "password"; // edit this
   const char* topicOne = "rv/outside/weather/temperature";
   const char* topicTwo = "rv/bedRoom/heater/setTempTo";
   WiFiClient espClient;
@@ -54,9 +54,9 @@ void setup() {
  
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);   
-  IPAddress ip(192, 168, 1, 111);
-  IPAddress gateway(192,168,1,1);   
-  IPAddress subnet(255,255,255,0);   
+  IPAddress ip(192, 168, 1, 111); // edit this
+  IPAddress gateway(192,168,1,1); // edit this
+  IPAddress subnet(255,255,255,0); // edit this
   WiFi.config(ip, gateway, subnet);  
       
   setup_WiFi();
