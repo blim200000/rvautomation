@@ -116,6 +116,7 @@ void loop() {
   prevHeatStatus = heatStatus;
   prevTemp = temp;
   prevHumidity = humidity;
+  delay(5000);
 }
 
 void setup_WiFi() {
@@ -139,9 +140,15 @@ void reconnect() {
       Serial.print("Connected");
       digitalWrite(wifiLED, HIGH);
       Serial.println();
-      client.publish("rv/bedRoom/heater/onOffStatus", heatStatus, true);
-      client.publish("rv/bedRoom/heater/temperature", String(temp).c_str(), true);
-      client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
+      if (heatStatus != prevHeatStatus) {
+        client.publish("rv/bedRoom/heater/onOffStatus", heatStatus, true);
+      }
+      if (temp != prevTemp) {  
+        client.publish("rv/bedRoom/heater/temperature", String(temp).c_str(), true);
+      }
+      if (humidity != prevHumidity) {  
+        client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
+      }
       client.subscribe("rv/outside/weather/temperature");
       client.subscribe("rv/bedRoom/heater/setTempTo");
     } else {
