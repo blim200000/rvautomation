@@ -12,13 +12,13 @@
 
   DHTesp dht;
 
-  const char* ssid = "WigWagDevAP";
-  const char* password = "blimpass";
+  const char* ssid = "**********"; \\ edit this
+  const char* password = "**********"; \\ edit this
   int wifiConnected = 0;
-  const char* mqttServer = "192.168.1.110";
-  const int mqttPort = 1883;
-  const char* mqttUser = "blim";
-  const char* mqttPassword = "blimpass";
+  const char* mqttServer = "broker.mqtt.server.com"; \\ edit this
+  const int mqttPort = 1883; \\ edit this
+  const char* mqttUser = "userName"; \\ edit this
+  const char* mqttPassword = "password"; \\ edit this
   const char* topicOne = "rv/cargo/heater/temperature";
   
   WiFiClient espClient;
