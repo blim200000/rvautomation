@@ -63,17 +63,18 @@ void loop() {
       heatStatus = "On";
     }
   if (heatStatus != prevHeatStatus) {
-    client.publish("rv/bedRoom/heater/onOffStatus", heatStatus, true);
+    client.publish("rv/cargo/heater/onOffStatus", heatStatus, true);
   }
   if (temp != prevTemp) {  
-    client.publish("rv/bedRoom/heater/temperature", String(temp).c_str(), true);
+    client.publish("rv/cargo/heater/temperature", String(temp).c_str(), true);
   }
   if (humidity != prevHumidity) {  
-    client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
+    client.publish("rv/cargo/heater/humidity", String(humidity).c_str(), true);
   }
   prevHeatStatus = heatStatus;
   prevTemp = temp;
   prevHumidity = humidity;
+  delay(5000);
 }
 
 void setup_WiFi() {
@@ -93,10 +94,15 @@ void reconnect() {
     if (client.connect("cargoHeater", "blim", "blimpass")) {
       Serial.print("Connected");
       Serial.println();
-      client.publish("rv/cargo/heater/onOffStatus", heatStatus, true);
-      client.publish("rv/cargo/heater/temperature", String(temp).c_str(), true);
-      client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
-      client.subscribe("rv/outside/weather/temperature");
+      if (heatStatus != prevHeatStatus) {
+        client.publish("rv/cargo/heater/onOffStatus", heatStatus, true);
+      }
+      if (temp != prevTemp) {  
+        client.publish("rv/cargo/heater/temperature", String(temp).c_str(), true);
+      }
+      if (humidity != prevHumidity) {  
+        client.publish("rv/cargo/heater/humidity", String(humidity).c_str(), true);
+      }      client.subscribe("rv/outside/weather/temperature");
     } else {
         Serial.print("failed, rc=");
         Serial.print(client.state());
