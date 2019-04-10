@@ -11,11 +11,14 @@
   int powerRelay = D4;          //connect relay1 to D1
   int heatRelay = D3;          //connect relay2 to D2
   char* heatStatus = "Off";
+  char* prevHeatStatus;
   int wifiConnected = 0;
   float setTempTo = 61.00;
   float outsideTemp = 30.00;
   float humidity;
   float temp;
+  float prevTemp;
+  float prevHumidity;
   
   DHTesp dht;
 
@@ -101,11 +104,18 @@ void loop() {
         digitalWrite(highHeatLED, LOW);
         heatStatus = "On";
       }
-      delay(10000);
-      client.publish("rv/bedRoom/heater/onOffStatus", heatStatus, true);
-      client.publish("rv/bedRoom/heater/temperature", String(temp).c_str(), true);
-      client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
-      
+  if (heatStatus != prevHeatStatus) {
+    client.publish("rv/bedRoom/heater/onOffStatus", heatStatus, true);
+  }
+  if (temp != prevTemp) {  
+    client.publish("rv/bedRoom/heater/temperature", String(temp).c_str(), true);
+  }
+  if (humidity != prevHumidity) {  
+    client.publish("rv/bedRoom/heater/humidity", String(humidity).c_str(), true);
+  }
+  prevHeatStatus = heatStatus;
+  prevTemp = temp;
+  prevHumidity = humidity;
 }
 
 void setup_WiFi() {
