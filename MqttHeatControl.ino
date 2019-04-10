@@ -16,14 +16,13 @@
   float outsideTemp = 30.00;
   float humidity;
   float temp;
-  long lastMsg = 0;
   
   DHTesp dht;
 
   const char* ssid = "***********"; // edit this
   const char* password = "***********"; // edit this
 
-  const char* mqttServer = "192.168.1.110"; // edit this
+  const char* mqttServer = "broker.mqtt.server.com"; // edit this
   const int mqttPort = 1883; // edit this
   const char* mqttUser = "userName"; // edit this
   const char* mqttPassword = "password"; // edit this
