@@ -102,7 +102,8 @@ void reconnect() {
       }
       if (humidity != prevHumidity) {  
         client.publish("rv/cargo/heater/humidity", String(humidity).c_str(), true);
-      }      client.subscribe("rv/outside/weather/temperature");
+      }      
+      client.subscribe("rv/outside/weather/temperature");
     } else {
         Serial.print("failed, rc=");
         Serial.print(client.state());
