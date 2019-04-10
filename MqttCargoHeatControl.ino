@@ -12,13 +12,13 @@
 
   DHTesp dht;
 
-  const char* ssid = "**********"; \\ edit this
-  const char* password = "**********"; \\ edit this
+  const char* ssid = "**********"; // edit this
+  const char* password = "**********"; // edit this
   int wifiConnected = 0;
-  const char* mqttServer = "broker.mqtt.server.com"; \\ edit this
-  const int mqttPort = 1883; \\ edit this
-  const char* mqttUser = "userName"; \\ edit this
-  const char* mqttPassword = "password"; \\ edit this
+  const char* mqttServer = "broker.mqtt.server.com"; // edit this
+  const int mqttPort = 1883; // edit this
+  const char* mqttUser = "userName"; // edit this
+  const char* mqttPassword = "password"; // edit this
   const char* topicOne = "rv/cargo/heater/temperature";
   
   WiFiClient espClient;
@@ -35,9 +35,9 @@ void setup() {
  
   WiFi.mode(WIFI_STA);
   WiFi.begin(ssid, password);   
-  IPAddress ip(192, 168, 1, 112);
-  IPAddress gateway(192,168,1,1);   
-  IPAddress subnet(255,255,255,0);   
+  IPAddress ip(192, 168, 1, 112); // edit this
+  IPAddress gateway(192,168,1,1); // edit this
+  IPAddress subnet(255,255,255,0); // edit this
   WiFi.config(ip, gateway, subnet);
   setup_WiFi();
   client.setServer(mqttServer, mqttPort);
