@@ -7,6 +7,11 @@ digital pin to D# on the silk screen are not the same as you will see in the com
 needed for your ESP8266 based chip.
 
 release log:
-  04.09.2019 - 17:11 - uploaded 2 arduino schetches for prototyped heating devices.
-                     - uploaded MQTT topic hierarchy.
-               22:50 - updated code on both clients to only publish when temp and humidity changes.
+
+04.09.2019 - 17:11
+- uploaded 2 arduino schetches for prototyped heating devices.
+- uploaded MQTT topic hierarchy.
+04.09.2019 - 22:50
+- updated code on both clients to only publish when temp and humidity changes.
+05.01.2019 - 09:35
+- added WiFi manager support, but want to add mqtt broker settings into web app of wifimanager.
